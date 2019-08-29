@@ -10,7 +10,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
+  background: linear-gradient(rgb(216, 26, 175), rgb(77, 8, 117));
 }
 .location,
 .temperature {
@@ -18,6 +18,7 @@ body {
   width: 50%;
   display: flex;
   justify-content: space-around;
+  color: white;
   align-items: center;
 }
 .temperature {

@@ -33,6 +33,7 @@ window.addEventListener('load', ()=> {
             let celcius = (temperature - 32) * (5 / 9);
 
             setIcons(icon, document.querySelector(".icon"));
+            temperatureSpan.textContent = "F";
 
             //celcius toggle
             temperatureSection.addEventListener('click', () => {
