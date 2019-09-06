@@ -6,6 +6,26 @@ window.addEventListener('load', ()=> {
   let locationTimezone = document.querySelector(".location-timezone");
   let temperatureSection = document.querySelector('.temperature');
   const temperatureSpan = document.querySelector('.temperature span');
+  const d = new Date();
+  const h = d.getHours();
+  console.log(h);
+
+  var orientation = "to top"
+  var colorOne;
+  var colorTwo;
+  if (h <= 5 || h >= 20) {
+    colorOne = "#a18cd1 0%";
+    colorTwo = "#fbc2eb 100%";
+  } else if (h >= 6 && h <= 15) {
+    colorOne = "#f6d365 0%";
+    colorTwo = "#fda085 100%";
+  } else {
+    colorOne = "#fad0c4 0%";
+    colorTwo = "#ffd1ff 100%";
+  }
+
+  document.body.style.backgroundImage = 'linear-gradient('
+        + orientation + ', ' + colorOne + ', ' + colorTwo + ')';
 
 
 
@@ -28,6 +48,7 @@ window.addEventListener('load', ()=> {
             temperatureDegree.textContent = temperature;
             temperatureDescription.textContent = summary;
             locationTimezone.textContent = data.timezone;
+
 
             //formula for celcius
             let celcius = (temperature - 32) * (5 / 9);
@@ -55,4 +76,37 @@ window.addEventListener('load', ()=> {
     skycons.play();
     return skycons.set(iconID, Skycons[currentIcon]);
   }
+
+  function changeBackground(temperature) {
+    const skycons = new Skycons({color: "white"});
+    const currentIcon = icon.replace(/-/g,"_").toUpperCase();
+    skycons.play();
+    return skycons.set(iconID, Skycons[currentIcon]);
+  }
+
+  function getCssValuePrefix()
+{
+    var rtrnVal = '';//default to standard syntax
+    var prefixes = ['-o-', '-ms-', '-moz-', '-webkit-'];
+
+    // Create a temporary DOM object for testing
+    var dom = document.createElement('div');
+
+    for (var i = 0; i < prefixes.length; i++)
+    {
+        // Attempt to set the style
+        dom.style.background = prefixes[i] + 'linear-gradient(#000000, #ffffff)';
+
+        // Detect if the style was successfully set
+        if (dom.style.background)
+        {
+            rtrnVal = prefixes[i];
+        }
+    }
+
+    dom = null;
+    delete dom;
+
+    return rtrnVal;
+}
 });
